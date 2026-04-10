@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, viewport-fit=cover, maximum-scale=5"
+    />
+    <meta name="theme-color" content="#365314" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <title>LPMI 人格测试</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="app-header">
+      <button type="button" class="icon-btn" id="btn-close" aria-label="关闭" title="占位">×</button>
+      <h1 class="app-title">LPMI 人格测试</h1>
+      <button type="button" class="icon-btn" aria-label="更多" title="占位">⋯</button>
+    </header>
+
+    <main class="main">
+      <!-- 介绍（可直接改 #intro-body 内文字） -->
+      <section id="screen-intro" class="screen screen-intro">
+        <div class="intro-hero">
+          <p class="intro-kicker">情景选择题 · 约 3 分钟</p>
+          <h2 class="intro-logo">LPMI</h2>
+          <p class="intro-tagline">人格测试</p>
+          <ul class="intro-dims" aria-label="四个维度">
+            <li><span class="dim-chip">L</span><span class="dim-name">考古</span></li>
+            <li><span class="dim-chip">P</span><span class="dim-name">脑补</span></li>
+            <li><span class="dim-chip">M</span><span class="dim-name">证据</span></li>
+            <li><span class="dim-chip">I</span><span class="dim-name">烈度</span></li>
+          </ul>
+        </div>
+
+        <article class="card intro-card">
+          <h3 class="intro-title">
+            <span class="intro-title-icon" aria-hidden="true">✦</span>
+            测试说明
+          </h3>
+          <div id="intro-body" class="intro-body">
+            <p>
+              <strong>LPMI</strong> 用于描述你在「嗑 CP」相关情境里的倾向，分为四个维度：<strong>L</strong>（考古 /
+              Lore）、<strong>P</strong>（脑补 / Plot）、<strong>M</strong>（证据 / Meticulous）、<strong>I</strong>（情绪烈度 /
+              Intensity）。
+            </p>
+            <p>
+              本测试共 <strong>20</strong> 道情景题，请选最贴近的一项。题目无对错，按直觉作答即可。
+            </p>
+            <p class="muted small intro-edit-hint">
+              你可随时在 <code>index.html</code> 里编辑本段介绍文案。
+            </p>
+          </div>
+          <button type="button" class="btn primary btn-start-glow" id="btn-start">开始测试</button>
+        </article>
+      </section>
+
+      <!-- 答题 -->
+      <section id="screen-quiz" class="screen hidden">
+        <p class="quiz-intro">
+          共 <span id="total-q">20</span> 题，请选择最贴近的一项。
+        </p>
+        <div class="progress-wrap">
+          <div class="progress-bar" id="progress-bar"></div>
+        </div>
+        <article class="card question-card">
+          <p class="q-meta">第 <span id="q-index">1</span> 题</p>
+          <h2 class="q-text" id="q-text"></h2>
+          <div class="options" id="options"></div>
+        </article>
+      </section>
+
+      <!-- 结果 -->
+      <section id="screen-result" class="screen hidden" aria-live="polite">
+        <div class="result-hero card">
+          <p class="eyebrow">你的人格类型是：</p>
+          <h2 class="type-name-cn" id="res-name-cn">——</h2>
+          <p class="type-code" id="res-code">????</p>
+          <div class="avatar-placeholder" id="res-avatar">
+            <span>人格配图占位<br />在 <code>PERSONAS_BY_CODE</code> 中设置 <code>image</code> 路径</span>
+          </div>
+          <p class="type-tagline" id="res-tagline">——</p>
+        </div>
+
+        <div class="card">
+          <h3 class="section-title-sm">四维倾向</h3>
+          <p class="muted small">仅供参考，帮助你理解自己的大致倾向（各维度独立）。</p>
+          <div id="dim-bars" class="dim-bars"></div>
+        </div>
+
+        <div class="card">
+          <h3 class="section-title-sm">各维度一句</h3>
+          <div id="dim-detail-cards" class="detail-grid"></div>
+        </div>
+
+        <div class="actions">
+          <button type="button" class="btn primary" id="btn-retry">重新测试</button>
+        </div>
+      </section>
+    </main>
+
+    <script src="app.js"></script>
+  </body>
+</html>
