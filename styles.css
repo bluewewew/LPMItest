@@ -412,6 +412,31 @@ body {
   margin: 0;
 }
 
+.res-essay {
+  margin: 0;
+}
+
+.res-essay-para {
+  margin: 0 0 12px;
+  font-size: 0.92rem;
+  line-height: 1.65;
+  color: var(--text);
+  text-align: justify;
+}
+
+.res-essay-para:last-child {
+  margin-bottom: 0;
+}
+
+.res-essay-aside {
+  padding: 12px 14px;
+  border-radius: 12px;
+  background: linear-gradient(135deg, rgba(254, 249, 195, 0.55), rgba(217, 249, 157, 0.45));
+  border: 1px solid rgba(132, 204, 22, 0.28);
+  font-size: 0.88rem;
+  color: var(--text-soft);
+}
+
 .section-title-sm {
   font-size: 1.05rem;
   margin: 0 0 10px;

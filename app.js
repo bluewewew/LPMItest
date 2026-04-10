@@ -5,10 +5,10 @@
  */
 
 const DIMENSIONS = {
-  L: { left: '考古', right: '当下', code: 'L' },
-  P: { left: '脑补', right: '所见即所得', code: 'P' },
-  M: { left: '铁证', right: '同框即婚', code: 'M' },
-  I: { left: '发癫', right: '冷静', code: 'I' },
+  L: { left: '考古·囤糖', right: '当下', code: 'L' },
+  P: { left: '脑补·剧场', right: '所见即所得', code: 'P' },
+  M: { left: '显微镜·证据', right: '同框即婚', code: 'M' },
+  I: { left: '发癫·分享', right: '冷静佛系', code: 'I' },
 };
 
 const DIM_KEYS = ['L', 'P', 'M', 'I'];
@@ -16,392 +16,188 @@ const DIM_KEYS = ['L', 'P', 'M', 'I'];
 /** @type {{ text: string, options: Record<string, { label: string } & Partial<Record<'L'|'P'|'M'|'I', number>>>}[]} */
 const questions = [
   {
-    text: '你在餐厅点菜，服务员说“这个菜比较慢”，你说“没事我能等”。四十分钟过去了，你会？',
+    text: '花絮很长时间没更新，米米会？',
     options: {
-      A: { label: '继续等，都等这么久了现在走不是亏了', L: 2, I: -2 },
-      B: { label: '催服务员，催完继续等', M: 2, I: -1 },
-      C: { label: '脑补后厨正在为你的菜发生什么精彩故事', P: 3, I: 2 },
-      D: { label: '站起来就走，我的时间不是时间？', L: -2, P: -2 },
+      A: { label: '翻以前的甜蜜旧糖反复回味', L: 2, I: -2 },
+      B: { label: '安静等待，相信雷子月月关系超好', M: 2, I: -1 },
+      C: { label: '脑补雷子月月私下轻松相处的可爱日常', P: 3, I: 2 },
+      D: { label: '无所谓啊，不放也不影响米米喜欢', L: -2, P: -2 },
     },
   },
   {
-    text: '朋友发来一条59秒的语音，你会？',
+    text: '看到月月和雷子发同款穿搭图，米米第一反应是？',
     options: {
-      A: { label: '转文字，提炼中心思想', M: 3, L: -2, I: -1 },
-      B: { label: '收藏，等有空再听，然后永远没空', L: 3, I: -2 },
-      C: { label: '听完，并针对其中第三秒的某个语气词展开分析', P: 3, M: 2, I: 1 },
-      D: { label: '回一个“6”', P: -2, M: -2, I: 1 },
+      A: { label: '放大看细节，找雷子月月温柔小互动', M: 3, L: -2, I: -1 },
+      B: { label: '好好存起来，慢慢品', L: 3, I: -2 },
+      C: { label: '立刻脑补一段甜甜的雷朋情侣小日常', P: 3, M: 2, I: 1 },
+      D: { label: '觉得不错，随手划走，等下一次豹豹猫猫营业', P: -2, M: -2, I: 1 },
     },
   },
   {
-    text: '你发现你和前任的现女友用了同款手机壳，你会？',
+    text: '有其他米米和米米你 get 同款糖点，米米会？',
     options: {
-      A: { label: '立刻换掉，晦气', L: -2, P: -2 },
-      B: { label: '截图发给朋友，标题“来活儿了”', I: 3, M: -2 },
-      C: { label: '研究她什么时候买的、是不是故意的', M: 3, L: 2, I: -1 },
-      D: { label: '无所谓，说明这款手机壳确实好看', I: -2, P: -2 },
+      A: { label: '开心交流，一起磕', L: -2, P: -2 },
+      B: { label: '截图发群：「速来一起磕！」', I: 3, M: -2 },
+      C: { label: '对比时间线，看看是不是同一个糖', M: 3, L: 2, I: -1 },
+      D: { label: '正常看待，磕点相似很正常尼', I: -2, P: -2 },
     },
   },
   {
-    text: '凌晨三点你突然醒了，你会？',
+    text: '半夜刷到爸爸妈妈新糖，米米会？',
     options: {
-      A: { label: '上厕所，喝水，继续睡', P: -2, I: -2 },
-      B: { label: '打开手机，然后两小时过去了', L: 3, I: 2 },
-      C: { label: '脑子里开始自动播放人生走马灯', P: 3, L: 2, I: 1 },
-      D: { label: '觉得这个时间点醒来一定有宇宙的深意', P: 3, M: -2, I: 2 },
+      A: { label: '存好糖，安心甜甜睡觉', P: -2, I: -2 },
+      B: { label: '越看越开心，忍不住多看亿会儿', L: 3, I: 2 },
+      C: { label: '脑补爸爸妈妈甜甜的相处小片段', P: 3, L: 2, I: 1 },
+      D: { label: '觉得这个糖特别有心意、很温暖', P: 3, M: -2, I: 2 },
     },
   },
   {
-    text: '你去超市买水果，挑水果的方式是？',
+    text: '路人说「夸这对氛围好好」，米米会？',
     options: {
-      A: { label: '逐个拿起来看、捏、闻', M: 3, L: -2 },
-      B: { label: '随便抓几个，差不多就行', P: -2, I: -2 },
-      C: { label: '先看别人怎么挑，然后学他', L: 2, I: -1 },
-      D: { label: '不挑，直接买切好的果盘', L: -2, I: 2 },
+      A: { label: '点头认同，列出米米觉得甜的地方', M: 3, L: -2 },
+      B: { label: '默默磕自己的，不参与讨论', P: -2, I: -2 },
+      C: { label: '跟着路人一起夸氛围好', L: 2, I: -1 },
+      D: { label: '赞同并开心分享米米自己的看法', L: -2, I: 2 },
     },
   },
   {
-    text: '同事/同学在群里发了一个红包，你抢到了0.01元，你会？',
+    text: '爸爸或妈妈一方提到很温柔的一句话，米米会？',
     options: {
-      A: { label: '发一个“谢谢老板”的表情包', I: -2, P: -2 },
-      B: { label: '截图发朋友圈，配文“这就是命”', I: 3, M: -2 },
-      C: { label: '私聊抢到最大红包的人，问他什么姿势抢的', M: 3, P: 2, I: 1 },
-      D: { label: '不说话，默默记下这个人的手气，下次他发红包你再抢', L: 3, I: -2 },
+      A: { label: '认真记下，并分享这份温柔尼', I: -2, P: -2 },
+      B: { label: '激动转发：好温柔好甜！', I: 3, M: -2 },
+      C: { label: '看上下文，理解完整意思', M: 3, P: 2, I: 1 },
+      D: { label: '悄悄记下来，当成小糖点', L: 3, I: -2 },
     },
   },
   {
-    text: '你洗澡时听歌，歌切到了一首很悲的歌，你会？',
+    text: '看到甜玉米大厨甜蜜日常剪辑，米米会？',
     options: {
-      A: { label: '切掉，洗澡要听嗨的', L: -2, I: 2 },
-      B: { label: '跟着唱，唱到动情处花洒当麦克风', I: 3, M: -2 },
-      C: { label: '陷入沉思，开始脑补自己是MV主角', P: 3, L: 2, I: 1 },
-      D: { label: '洗完澡去查这首歌的创作背景', M: 3, L: -2, I: -1 },
+      A: { label: '开心看完，心情变好啊', L: -2, I: 2 },
+      B: { label: '全程姨母笑，看得超投入诶', I: 3, M: -2 },
+      C: { label: '脑补雷子月月私下更可爱的互动尼', P: 3, L: 2, I: 1 },
+      D: { label: '欣赏画面和节奏，静静观看进行中', M: 3, L: -2, I: -1 },
     },
   },
   {
-    text: '别人跟你说“你知道吗”，然后说了一件你早就知道的事，你会？',
+    text: '有其他米米跟米米说米米早就知道的糖，米米会？',
     options: {
-      A: { label: '礼貌微笑：“哦是吗”', I: -2, P: -2 },
-      B: { label: '“我知道，而且我还知道”——然后开始补充细节', M: 3, L: 3 },
-      C: { label: '假装不知道，让他说完，享受观察人类的乐趣', P: 3, I: -1 },
-      D: { label: '“你才知道啊？”', I: 2, L: -2 },
+      A: { label: '微笑附和：是啊，超级甜齁甜！', I: -2, P: -2 },
+      B: { label: '顺势补充更多爆糖小细节', M: 3, L: 3 },
+      C: { label: '安静听完，觉得分享很可爱呀', P: 3, I: -1 },
+      D: { label: '直接说：这个米米我早就磕到啦', I: 2, L: -2 },
     },
   },
   {
-    text: '你被拉去玩狼人杀/剧本杀，你通常？',
+    text: '玩小逆爱名场面猜梗游戏，米米通常？',
     options: {
-      A: { label: '认真做笔记，时间线整理得比法官还清楚', M: 3, L: -2, I: -1 },
-      B: { label: '全程划水，但最后投对人了', I: -2, P: -2 },
-      C: { label: '编了一套完整的身世故事，把所有人骗了', P: 3, I: 2 },
-      D: { label: '第一轮就被投出去，然后在旁边看戏', L: 2, I: -2 },
+      A: { label: '记得很清楚，能说出时间和场景', M: 3, L: -2, I: -1 },
+      B: { label: '凭感觉答，经常能蒙对', I: -2, P: -2 },
+      C: { label: '靠脑补画面，猜得很准', P: 3, I: 2 },
+      D: { label: '不太参与，跟着大家乐呵', L: 2, I: -2 },
     },
   },
   {
-    text: '你手机里有多少个没点开的微信红点？',
+    text: '米米磕糖相关群的未读消息提醒？',
     options: {
-      A: { label: '零，看见红点必须点掉', I: 2, M: 3 },
-      B: { label: '两位数，习惯了', I: -2, P: -2 },
-      C: { label: '三位数，已经放弃治疗', L: 3, I: -2 },
-      D: { label: '我甚至不知道红点是什么意思，我把微信通知关了', P: 2, I: -2 },
+      A: { label: '看到就点开，不想漏糖', I: 2, M: 3 },
+      B: { label: '有一些，有空再看', I: -2, P: -2 },
+      C: { label: '攒了很多，慢慢看', L: 3, I: -2 },
+      D: { label: '关掉通知，随缘看', P: 2, I: -2 },
     },
   },
   {
-    text: '你看综艺看到煽情环节开始放BGM，你会？',
+    text: '花絮放出温柔互动片段，米米会？',
     options: {
-      A: { label: '眼眶湿润，但假装没哭', I: -1, P: 2 },
-      B: { label: '快进，我是来找乐子的不是来哭的', L: -2, P: -2 },
-      C: { label: '哭得比嘉宾还惨', I: 3, M: -2 },
-      D: { label: '分析这段剪辑用了几个机位', M: 3, L: 2, I: -2 },
+      A: { label: '心里觉得甜，但表面装淡定', I: -1, P: 2 },
+      B: { label: '认真看完，觉得很治愈', L: -2, P: -2 },
+      C: { label: '开心到嘴角下不来', I: 3, M: -2 },
+      D: { label: '观察细节，理解彼此的默契', M: 3, L: 2, I: -2 },
     },
   },
   {
-    text: '你去吃自助餐，你的策略是？',
+    text: '米米磕糖的习惯顺序是？',
     options: {
-      A: { label: '先巡视一圈，规划路线再拿', M: 3, L: -2, I: -1 },
-      B: { label: '直奔最贵的，吃回本', L: -2, I: -1 },
-      C: { label: '每样拿一点，摆盘拍照', P: -2, I: 2 },
-      D: { label: '帮全桌人拿吃的，自己最后吃', I: -2, L: 2 },
+      A: { label: '先看完整内容，再找糖点', M: 3, L: -2, I: -1 },
+      B: { label: '直奔温柔名场面，反复看', L: -2, I: -1 },
+      C: { label: '慢慢看，截图喜欢的画面', P: -2, I: 2 },
+      D: { label: '先看别人分享，再自己磕', I: -2, L: 2 },
     },
   },
   {
-    text: '你发现你的朋友偷偷把你的微信备注改成了“大怨种”，你会？',
+    text: '米友说这对相处好自然，米米会？',
     options: {
-      A: { label: '改回去，并截图留证', M: 3, L: 2, I: -1 },
-      B: { label: '把他的备注改成“大怨种之子”', I: 3, P: 2 },
-      C: { label: '反思自己是不是真的有点怨种', P: 3, I: -2 },
-      D: { label: '无所谓，备注而已', P: -2, I: -2 },
+      A: { label: '认同并说出米米感受到的细节', M: 3, L: 2, I: -1 },
+      B: { label: '疯狂点头：真的超自然！', I: 3, P: 2 },
+      C: { label: '脑补他们轻松舒服的相处模式', P: 3, I: -2 },
+      D: { label: '安静赞同，不发表太多', P: -2, I: -2 },
     },
   },
   {
-    text: '半夜饿了，你会？',
+    text: '半夜突然想到一个超甜小细节，米米会？',
     options: {
-      A: { label: '打开外卖软件，刷半小时，然后关了睡觉', I: -2, L: 2 },
-      B: { label: '起床煮泡面，加蛋加肠，仪式感拉满', I: 3, P: 2 },
-      C: { label: '打开冰箱，有什么吃什么', P: -2, L: -2 },
-      D: { label: '发朋友圈“有没有人出来吃宵夜”', I: 3, M: -2 },
+      A: { label: '记在心里，明天再回味', I: -2, L: 2 },
+      B: { label: '立刻开心记录下来，当成小灵感', I: 3, P: 2 },
+      C: { label: '翻出相关内容再看一遍', P: -2, L: -2 },
+      D: { label: '发群里：谁懂！这个细节好甜', I: 3, M: -2 },
     },
   },
   {
-    text: '你朋友圈的可见范围是？',
+    text: '米米存爸妈图片的方式是？',
     options: {
-      A: { label: '全部可见，坦坦荡荡', P: -2, I: 2 },
-      B: { label: '三天可见，保持神秘', I: -1, L: -2 },
-      C: { label: '分组可见，每条朋友圈都有不同的观众', M: 3, P: 3 },
-      D: { label: '半年可见，因为懒得改', L: 3, I: -2 },
+      A: { label: '放在常用相册，方便翻看', P: -2, I: 2 },
+      B: { label: '单独收藏，悄悄喜欢', I: -1, L: -2 },
+      C: { label: '按场景/时间分类整理', M: 3, P: 3 },
+      D: { label: '全部放在一起，不特意整理', L: 3, I: -2 },
     },
   },
   {
-    text: '朋友跟你吐槽他的感情问题，你通常会？',
+    text: '米友说这对看着很舒服，米米会？',
     options: {
-      A: { label: '耐心听完，然后说“那你打算怎么办”', I: -2, M: 2 },
-      B: { label: '跟着一起骂对方，骂得比他还狠', I: 3, M: -2 },
-      C: { label: '帮他分析这段关系的底层逻辑', P: 3, M: 3, I: -1 },
-      D: { label: '听完说“我早就觉得他不靠谱”', L: 3, I: -1 },
+      A: { label: '认真同意：确实很舒服啊', I: -2, M: 2 },
+      B: { label: '疯狂赞同，分享米米最爱的点', I: 3, M: -2 },
+      C: { label: '理解这种舒服感来自默契与温柔', P: 3, M: 3, I: -1 },
+      D: { label: '淡定：一直都觉得爸妈超合拍', L: 3, I: -1 },
     },
   },
   {
-    text: '你看到路边有人在吵架，你会？',
+    text: '路人说「这俩关系好好」，米米会？',
     options: {
-      A: { label: '快步走过，不关我事', P: -2, I: -2 },
-      B: { label: '放慢脚步，听一耳朵', M: 2, I: -1 },
-      C: { label: '脑补他们吵架的原因和后续', P: 3, L: -2, I: 1 },
-      D: { label: '拍下来发群里“有瓜速来”', I: 3, M: -2 },
+      A: { label: '默默赞同，继续做自己的事', P: -2, I: -2 },
+      B: { label: '悄悄开心，被认可了', M: 2, I: -1 },
+      C: { label: '脑补路人也感受到他们的好氛围', P: 3, L: -2, I: 1 },
+      D: { label: '开心分享：路人都看出来啦', I: 3, M: -2 },
     },
   },
   {
-    text: '你最喜欢的网络梗是哪种类型？',
+    text: '米米最喜欢的糖类型是？',
     options: {
-      A: { label: '阴阳怪气型（比如“啊对对对”）', I: -1, P: 2 },
-      B: { label: '发疯文学型（比如“尖叫扭曲爬行”）', I: 3, M: -2 },
-      C: { label: '废话文学型（比如“听君一席话如听一席话”）', P: -2, I: -1 },
-      D: { label: '考古型（别人都忘了的梗你还在玩）', L: 3, M: 2 },
+      A: { label: '温柔细节、下意识关心', I: -1, P: 2 },
+      B: { label: '明显又真诚的可爱互动', I: 3, M: -2 },
+      C: { label: '自然氛围、默契感拉满', P: -2, I: -1 },
+      D: { label: '经典旧糖、回忆里的温暖', L: 3, M: 2 },
     },
   },
   {
-    text: '你的购物车通常的状态是？',
+    text: '米米的 CP 粮（图/文/片段）库存？',
     options: {
-      A: { label: '空的，买完就清', L: -2, P: -2 },
-      B: { label: '加了一堆，但很少下单', L: 3, I: -2 },
-      C: { label: '加了一堆，半夜冲动下单', I: 3, M: -2 },
-      D: { label: '购物车分类整理，比商店还整齐', M: 3, P: 2, I: -2 },
+      A: { label: '看完喜欢的留下，其他精简', L: -2, P: -2 },
+      B: { label: '存了很多，舍不得删', L: 3, I: -2 },
+      C: { label: '看到喜欢的就存，越存越多', I: 3, M: -2 },
+      D: { label: '分类整理，清晰好找', M: 3, P: 2, I: -2 },
     },
   },
   {
-    text: '测完这个测试，你会？',
+    text: '结束遇见雷朋的 25 年，米米会？',
     options: {
-      A: { label: '截图发朋友圈，配文“我是这个？”', I: 3, M: -2 },
-      B: { label: '再测一遍，看看能不能测出别的', M: 3, P: 2 },
-      C: { label: '研究题目和结果之间的关系', P: 3, L: 2, I: -1 },
-      D: { label: '测完就关，不留一片云彩', P: -2, I: -2 },
+      A: { label: '分享感受，记录这段开心时光', I: 3, M: -2 },
+      B: { label: '回顾一路磕过的糖，满满温暖', M: 3, P: 2 },
+      C: { label: '脑补爸爸妈妈一直这样开心相处下去', P: 3, L: 2, I: -1 },
+      D: { label: '安静喜欢，不张扬不喧哗', P: -2, I: -2 },
     },
   },
 ];
 
-/**
- * 20 种人格（按 code 索引）。image 可填 'assets/personas/xxx.png'
- */
-const PERSONAS_BY_CODE = {
-  CHLL: {
-    code: 'CHLL',
-    name: '死机',
-    tagline: '你嗑CP像冰箱制冷——稳定、恒温、不声不响。有糖就存，没糖拉倒。',
-    detailL: '——',
-    detailP: '——',
-    detailM: '——',
-    detailI: '——',
-    image: '',
-  },
-  BOIL: {
-    code: 'BOIL',
-    name: '沸物',
-    tagline: '你是一锅随时烧开的水。同框一次你能叫三天，凉完下次还炸。',
-    detailL: '——',
-    detailP: '——',
-    detailM: '——',
-    detailI: '——',
-    image: '',
-  },
-  JUDG: {
-    code: 'JUDG',
-    name: '杠精',
-    tagline: '没实锤不开口，开口就是判决书。证据不足，退回补充侦查。',
-    detailL: '——',
-    detailP: '——',
-    detailM: '——',
-    detailI: '——',
-    image: '',
-  },
-  SIRN: {
-    code: 'SIRN',
-    name: '哑炮',
-    tagline: '平时安静如鸡，实锤一到立刻拉响警报，你是全村最大的声音。',
-    detailL: '——',
-    detailP: '——',
-    detailM: '——',
-    detailI: '——',
-    image: '',
-  },
-  MIST: {
-    code: 'MIST',
-    name: '闷骚',
-    tagline: '脑子里写完了他们的八辈子，外表看起来只是在发呆。',
-    detailL: '——',
-    detailP: '——',
-    detailM: '——',
-    detailI: '——',
-    image: '',
-  },
-  SWEET: {
-    code: 'SWEET',
-    name: '甜党',
-    tagline: '脑补功率爆表：糖在脑子里先发酵一遍，表面还能装没事。',
-    detailL: '——',
-    detailP: '——',
-    detailM: '——',
-    detailI: '——',
-    image: '',
-  },
-  STOM: {
-    code: 'STOM',
-    name: '戏精',
-    tagline: 'L、M 冷静下线时，P 和 I 在台上抢戏，全场都是你的镜头。',
-    detailL: '——',
-    detailP: '——',
-    detailM: '——',
-    detailI: '——',
-    image: '',
-  },
-  VAUL: {
-    code: 'VAUL',
-    name: '囤癖',
-    tagline: '脑补完自己找证据验证，验证完存进档案库。大脑是加密硬盘。',
-    detailL: '——',
-    detailP: '——',
-    detailM: '——',
-    detailI: '——',
-    image: '',
-  },
-  FREN: {
-    code: 'FREN',
-    name: '上头',
-    tagline: '当下线 L 在休息，P/M/I 合力把油门踩到底，总分高到像开挂。',
-    detailL: '——',
-    detailP: '——',
-    detailM: '——',
-    detailI: '——',
-    image: '',
-  },
-  MOSS: {
-    code: 'MOSS',
-    name: '钉子户',
-    tagline: '你长在那了。不声不响，但一直都在。你只是不走而已。',
-    detailL: '——',
-    detailP: '——',
-    detailM: '——',
-    detailI: '——',
-    image: '',
-  },
-  ECHO: {
-    code: 'ECHO',
-    name: '复读机',
-    tagline: '同一个旧糖你能反复叫。三个月前叫过，今天想起来又叫一次。',
-    detailL: '——',
-    detailP: '——',
-    detailM: '——',
-    detailI: '——',
-    image: '',
-  },
-  ARCH: {
-    code: 'ARCH',
-    name: '考据',
-    tagline: '你在给CP写编年史。每一颗糖都有时间地点出处。档案馆馆长。',
-    detailL: '——',
-    detailP: '——',
-    detailM: '——',
-    detailI: '——',
-    image: '',
-  },
-  LOOP: {
-    code: 'LOOP',
-    name: '卡带',
-    tagline: '同一个镜头看了一百遍，每次都觉得发现了新东西。播放器只有重播键。',
-    detailL: '——',
-    detailP: '——',
-    detailM: '——',
-    detailI: '——',
-    image: '',
-  },
-  ROOT: {
-    code: 'ROOT',
-    name: '蹲坑',
-    tagline: '表面啥也没有，底下根扎了八米深。盘出了包浆但从不出土。',
-    detailL: '——',
-    detailP: '——',
-    detailM: '——',
-    detailI: '——',
-    image: '',
-  },
-  HUSK: {
-    code: 'HUSK',
-    name: '空转',
-    tagline: '脑补开到最大档，证据线偶尔掉线，但情绪与考古还在往前滚。',
-    detailL: '——',
-    detailP: '——',
-    detailM: '——',
-    detailI: '——',
-    image: '',
-  },
-  MONK: {
-    code: 'MONK',
-    name: '念经',
-    tagline: '反复盘旧糖、写分析、找证据，从不外传。嗑CP像修行。',
-    detailL: '——',
-    detailP: '——',
-    detailM: '——',
-    detailI: '——',
-    image: '',
-  },
-  FURY: {
-    code: 'FURY',
-    name: '炸毛',
-    tagline: '四维全在高位，情绪再点一把火——全场都能听见你的雷达在响。',
-    detailL: '——',
-    detailP: '——',
-    detailM: '——',
-    detailI: '——',
-    image: '',
-  },
-  CHAF: {
-    code: 'CHAF',
-    name: '渣男',
-    tagline: '路过什么嗑什么，嗑完就忘。风一吹就飘到下一片地。问就是嗑过，忘了是谁。',
-    detailL: '——',
-    detailP: '——',
-    detailM: '——',
-    detailI: '——',
-    image: '',
-  },
-  TAP: {
-    code: 'TAP',
-    name: '手速',
-    tagline: '证据门槛在线，情绪也在线：先找锤再尖叫，两手都要硬。',
-    detailL: '——',
-    detailP: '——',
-    detailM: '——',
-    detailI: '——',
-    image: '',
-  },
-  BARK: {
-    code: 'BARK',
-    name: '狗叫',
-    tagline: '主页只有三种内容：啊啊啊、呜呜呜、图。你是人形开水壶，守着地的小狗。',
-    detailL: '——',
-    detailP: '——',
-    detailM: '——',
-    detailI: '——',
-    image: '',
-  },
-};
+/** 人格表见 personas.js（先于 app.js 加载） */
 
 function computeBounds() {
   const min = { L: 0, P: 0, M: 0, I: 0 };
@@ -483,7 +279,31 @@ function getPersonalityCode(scores) {
 
 function pickPersona(raw) {
   const code = getPersonalityCode(raw);
-  return PERSONAS_BY_CODE[code] || PERSONAS_BY_CODE.BOIL;
+  const table = typeof PERSONAS_BY_CODE !== 'undefined' ? PERSONAS_BY_CODE : {};
+  return table[code] || table.BOIL;
+}
+
+/** 按「再抽象一点：」拆成两段展示 */
+function renderEssay(container, text) {
+  container.innerHTML = '';
+  if (!text || !text.trim()) {
+    container.innerHTML = '<p class="res-essay-para muted small">暂无解读</p>';
+    return;
+  }
+  const mark = '再抽象一点：';
+  const idx = text.indexOf(mark);
+  const main = (idx === -1 ? text : text.slice(0, idx)).trim();
+  const aside = idx === -1 ? '' : (mark + text.slice(idx + mark.length)).trim();
+  const p1 = document.createElement('p');
+  p1.className = 'res-essay-para';
+  p1.textContent = main;
+  container.appendChild(p1);
+  if (aside) {
+    const p2 = document.createElement('p');
+    p2.className = 'res-essay-para res-essay-aside';
+    p2.textContent = aside;
+    container.appendChild(p2);
+  }
 }
 
 function renderQuiz() {
@@ -535,6 +355,7 @@ function showResult(answers) {
   document.getElementById('res-name-cn').textContent = displayName;
   document.getElementById('res-code').textContent = persona.code;
   document.getElementById('res-tagline').textContent = persona.tagline;
+  renderEssay(document.getElementById('res-essay'), persona.essay || '');
   const av = document.getElementById('res-avatar');
   av.innerHTML = '';
   if (persona.image) {

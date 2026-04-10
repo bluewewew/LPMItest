@@ -8,13 +8,13 @@
     />
     <meta name="theme-color" content="#365314" />
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
-    <title>LPMI 人格测试</title>
+    <title>LPMI 人格测试 · 纯爱磕 CP 版</title>
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
     <header class="app-header">
       <button type="button" class="icon-btn" id="btn-close" aria-label="关闭" title="占位">×</button>
-      <h1 class="app-title">LPMI 人格测试</h1>
+      <h1 class="app-title">LPMI · 纯爱磕 CP</h1>
       <button type="button" class="icon-btn" aria-label="更多" title="占位">⋯</button>
     </header>
 
@@ -22,14 +22,14 @@
       <!-- 介绍（可直接改 #intro-body 内文字） -->
       <section id="screen-intro" class="screen screen-intro">
         <div class="intro-hero">
-          <p class="intro-kicker">情景选择题 · 约 3 分钟</p>
+          <p class="intro-kicker">雷朋向情景题 · 约 3 分钟</p>
           <h2 class="intro-logo">LPMI</h2>
-          <p class="intro-tagline">人格测试</p>
+          <p class="intro-tagline">纯爱磕 CP 版</p>
           <ul class="intro-dims" aria-label="四个维度">
-            <li><span class="dim-chip">L</span><span class="dim-name">考古</span></li>
-            <li><span class="dim-chip">P</span><span class="dim-name">脑补</span></li>
-            <li><span class="dim-chip">M</span><span class="dim-name">证据</span></li>
-            <li><span class="dim-chip">I</span><span class="dim-name">烈度</span></li>
+            <li><span class="dim-chip">L</span><span class="dim-name">考古囤糖</span></li>
+            <li><span class="dim-chip">P</span><span class="dim-name">脑补剧场</span></li>
+            <li><span class="dim-chip">M</span><span class="dim-name">显微镜</span></li>
+            <li><span class="dim-chip">I</span><span class="dim-name">情绪烈度</span></li>
           </ul>
         </div>
 
@@ -40,15 +40,15 @@
           </h3>
           <div id="intro-body" class="intro-body">
             <p>
-              <strong>LPMI</strong> 用于描述你在「嗑 CP」相关情境里的倾向，分为四个维度：<strong>L</strong>（考古 /
-              Lore）、<strong>P</strong>（脑补 / Plot）、<strong>M</strong>（证据 / Meticulous）、<strong>I</strong>（情绪烈度 /
-              Intensity）。
+              <strong>LPMI</strong> 描述米米在「纯爱磕 CP」情境里的倾向：<strong>L</strong> 考古囤糖（挖旧糖、恋旧）、<strong>P</strong>
+              脑补功率（空气编剧、甜向小剧场）、<strong>M</strong> 证据门槛（显微镜、理糖点）、<strong>I</strong> 情绪烈度（尖叫分享 vs
+              冷静佛系）。
             </p>
             <p>
-              本测试共 <strong>20</strong> 道情景题，请选最贴近的一项。题目无对错，按直觉作答即可。
+              共 <strong>20</strong> 道雷朋向情景题，选最贴近的一项即可；无标准答案，测出来仅供对号入座和自嘲。
             </p>
             <p class="muted small intro-edit-hint">
-              你可随时在 <code>index.html</code> 里编辑本段介绍文案。
+              题目与分值在 <code>app.js</code>，人格长文在 <code>personas.js</code>。
             </p>
           </div>
           <button type="button" class="btn primary btn-start-glow" id="btn-start">开始测试</button>
@@ -83,6 +83,11 @@
         </div>
 
         <div class="card">
+          <h3 class="section-title-sm">类型解读</h3>
+          <div id="res-essay" class="res-essay" aria-live="polite"></div>
+        </div>
+
+        <div class="card">
           <h3 class="section-title-sm">四维倾向</h3>
           <p class="muted small">仅供参考，帮助你理解自己的大致倾向（各维度独立）。</p>
           <div id="dim-bars" class="dim-bars"></div>
@@ -99,6 +104,7 @@
       </section>
     </main>
 
+    <script src="personas.js"></script>
     <script src="app.js"></script>
   </body>
 </html>
