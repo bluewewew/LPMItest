@@ -1,4 +1,4 @@
-# 静态 HTML 部署到 GitHub Pages（仓库 Settings → Pages → Source 选 GitHub Actions）
+# 推送到 gh-pages 分支；仓库 Settings → Pages → Source 选 branch「gh-pages」/ folder「/ (root)」
 name: Deploy to GitHub Pages
 
 on:
@@ -6,32 +6,29 @@ on:
     branches: [main]
 
 permissions:
-  contents: read
-  pages: write
-  id-token: write
+  contents: write
 
 concurrency:
-  group: pages
+  group: pages-gh-pages
   cancel-in-progress: true
 
 jobs:
   deploy:
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Setup Pages
-        uses: actions/configure-pages@v5
+      - name: Prepare site (仅发布页面所需文件)
+        run: |
+          mkdir -p dist
+          cp index.html app.js styles.css personas.js dist/
+          cp -r assets dist/
+          touch dist/.nojekyll
 
-      - name: Upload site
-        uses: actions/upload-pages-artifact@v3
+      - name: Deploy to gh-pages branch
+        uses: peaceiris/actions-gh-pages@v4
         with:
-          path: .
-
-      - name: Deploy
-        id: deployment
-        uses: actions/deploy-pages@v4
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./dist
+          force_orphan: true
