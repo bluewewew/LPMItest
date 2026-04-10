@@ -297,32 +297,6 @@ body {
   margin-bottom: 0;
 }
 
-.credits-links-wrap {
-  margin: 0 0 12px;
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: 6px 10px;
-  font-size: 0.92rem;
-}
-
-.credits-link {
-  color: var(--accent-mid);
-  font-weight: 700;
-  text-decoration: underline;
-  text-underline-offset: 3px;
-  text-decoration-thickness: 1px;
-}
-
-.credits-link:hover {
-  color: var(--accent);
-}
-
-.credits-sep {
-  color: var(--muted);
-  user-select: none;
-}
-
 .official-intro {
   margin: 0 0 14px;
   font-size: 0.92rem;
