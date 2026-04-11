@@ -46,20 +46,6 @@ const DIMENSIONS = {
 
 const DIM_KEYS = ['L', 'P', 'M', 'I'];
 
-/** 结果页名称下立绘（与 PERSONAS_BY_CODE 对应） */
-const CHAR_IMAGE_BY_CODE = {
-  CHAF: 'assets/chars/tianyumi.png',
-  SWEET: 'assets/chars/zhuanghuo-mi.png',
-  BARK: 'assets/chars/goujiao-mi.png',
-  BOIL: 'assets/chars/feiwu-mi.png',
-  VAUL: 'assets/chars/cangshu-mi.png',
-  CHLL: 'assets/chars/bailan-mi.png',
-  MOSS: 'assets/chars/dingzihu-mi.png',
-  JUDG: 'assets/chars/tiezui-mi.png',
-  MONK: 'assets/chars/zhenyan-mi.png',
-  MIST: 'assets/chars/xiangmei-mi.png',
-};
-
 /** 结果页随机一条搞笑小任务（与计分无关） */
 const FUNNY_TASKS = [
   '偷田雷手机！',
@@ -434,35 +420,6 @@ function showResult(answers) {
   const taskEl = document.getElementById('res-task-body');
   if (taskEl) taskEl.textContent = pickRandomTask();
   renderEssay(document.getElementById('res-essay'), persona.essay || '');
-
-  const charPath = CHAR_IMAGE_BY_CODE[persona.code];
-  const portraitEl = document.getElementById('res-char-portrait');
-  if (portraitEl) {
-    if (charPath) {
-      portraitEl.hidden = false;
-      portraitEl.innerHTML = `<img class="res-char-img" src="${charPath}" alt="${displayName} 形象" loading="lazy" decoding="async" />`;
-    } else {
-      portraitEl.hidden = true;
-      portraitEl.innerHTML = '';
-    }
-  }
-
-  const av = document.getElementById('res-avatar');
-  av.classList.toggle('is-hidden', Boolean(charPath));
-  av.innerHTML = '';
-  if (charPath) {
-    /* 形象已在名称下展示，不再显示占位框 */
-  } else if (persona.image) {
-    const img = document.createElement('img');
-    img.src = persona.image;
-    img.alt = displayName;
-    img.onerror = () => {
-      av.innerHTML = '<span>图片加载失败，请检查 PERSONAS_BY_CODE 中的 image 路径</span>';
-    };
-    av.appendChild(img);
-  } else {
-    av.innerHTML = `<span>${persona.code}<br />配图占位</span>`;
-  }
 
   const bars = document.getElementById('dim-bars');
   bars.innerHTML = '';

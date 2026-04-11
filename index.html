@@ -113,11 +113,64 @@
         <div class="result-hero card">
           <p class="eyebrow">你的人格类型是：</p>
           <h2 class="type-name-cn" id="res-name-cn">——</h2>
-          <div id="res-char-portrait" class="res-char-portrait" hidden></div>
-          <p class="type-code" id="res-code">????</p>
-          <div class="avatar-placeholder" id="res-avatar">
-            <span>人格配图占位<br />在 <code>PERSONAS_BY_CODE</code> 中设置 <code>image</code> 路径</span>
+          <div id="res-meme-visual" class="res-meme-visual" aria-label="人格结果配图">
+            <div class="result-mimi-grid" aria-hidden="true">
+              <div class="result-mimi-tile">
+                <div class="result-mimi-frame">
+                  <img
+                    src="assets/chars/dingzihu-mi.png"
+                    alt=""
+                    width="200"
+                    height="200"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                </div>
+                <span class="result-mimi-label">钉子户米</span>
+              </div>
+              <div class="result-mimi-tile">
+                <div class="result-mimi-frame">
+                  <img
+                    src="assets/chars/tiezui-mi.png"
+                    alt=""
+                    width="200"
+                    height="200"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                </div>
+                <span class="result-mimi-label">铁嘴米</span>
+              </div>
+              <div class="result-mimi-tile">
+                <div class="result-mimi-frame">
+                  <img
+                    src="assets/chars/zhenyan-mi.png"
+                    alt=""
+                    width="200"
+                    height="200"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                </div>
+                <span class="result-mimi-label">真言米</span>
+              </div>
+              <div class="result-mimi-tile">
+                <div class="result-mimi-frame">
+                  <img
+                    src="assets/chars/xiangmei-mi.png"
+                    alt=""
+                    width="200"
+                    height="200"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                </div>
+                <span class="result-mimi-label">想美了米</span>
+              </div>
+            </div>
+            <p class="result-wf-whisper">wf身体冷冷的，多半是……</p>
           </div>
+          <p class="type-code" id="res-code">????</p>
           <p class="type-tagline" id="res-tagline">——</p>
         </div>
 
@@ -130,64 +183,6 @@
         <div class="card">
           <h3 class="section-title-sm">类型解读</h3>
           <div id="res-essay" class="res-essay" aria-live="polite"></div>
-        </div>
-
-        <div class="card result-meme-card">
-          <div class="result-mimi-grid" aria-label="梗图：钉子户米、铁嘴米、真言米、想美了米">
-            <div class="result-mimi-tile">
-              <div class="result-mimi-frame">
-                <img
-                  src="assets/chars/dingzihu-mi.png"
-                  alt="钉子户米"
-                  width="200"
-                  height="200"
-                  loading="lazy"
-                  decoding="async"
-                />
-              </div>
-              <span class="result-mimi-label">钉子户米</span>
-            </div>
-            <div class="result-mimi-tile">
-              <div class="result-mimi-frame">
-                <img
-                  src="assets/chars/tiezui-mi.png"
-                  alt="铁嘴米"
-                  width="200"
-                  height="200"
-                  loading="lazy"
-                  decoding="async"
-                />
-              </div>
-              <span class="result-mimi-label">铁嘴米</span>
-            </div>
-            <div class="result-mimi-tile">
-              <div class="result-mimi-frame">
-                <img
-                  src="assets/chars/zhenyan-mi.png"
-                  alt="真言米"
-                  width="200"
-                  height="200"
-                  loading="lazy"
-                  decoding="async"
-                />
-              </div>
-              <span class="result-mimi-label">真言米</span>
-            </div>
-            <div class="result-mimi-tile">
-              <div class="result-mimi-frame">
-                <img
-                  src="assets/chars/xiangmei-mi.png"
-                  alt="想美了米"
-                  width="200"
-                  height="200"
-                  loading="lazy"
-                  decoding="async"
-                />
-              </div>
-              <span class="result-mimi-label">想美了米</span>
-            </div>
-          </div>
-          <p class="result-wf-whisper">wf身体冷冷的，多半是……</p>
         </div>
 
         <article class="card credits-card">
