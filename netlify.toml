@@ -1,9 +1,0 @@
-# Netlify：静态站点，根目录发布（index.html / app.js / personas.js / styles.css / assets）
-[build]
-  publish = "."
-  # 无构建步骤；若仪表盘里填了 build command，可留空或删掉
-
-[[headers]]
-  for = "/*"
-  [headers.values]
-    X-Frame-Options = "SAMEORIGIN"
