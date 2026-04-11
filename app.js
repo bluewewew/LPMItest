@@ -46,6 +46,20 @@ const DIMENSIONS = {
 
 const DIM_KEYS = ['L', 'P', 'M', 'I'];
 
+/** 仅当仓库内有对应立绘时展示；未列出的类型不显示图 */
+const CHAR_IMAGE_BY_CODE = {
+  CHAF: 'assets/chars/tianyumi.png',
+  SWEET: 'assets/chars/zhuanghuo-mi.png',
+  BARK: 'assets/chars/goujiao-mi.png',
+  BOIL: 'assets/chars/feiwu-mi.png',
+  VAUL: 'assets/chars/cangshu-mi.png',
+  CHLL: 'assets/chars/bailan-mi.png',
+  MOSS: 'assets/chars/dingzihu-mi.png',
+  JUDG: 'assets/chars/tiezui-mi.png',
+  MONK: 'assets/chars/zhenyan-mi.png',
+  MIST: 'assets/chars/xiangmei-mi.png',
+};
+
 /** 结果页随机一条搞笑小任务（与计分无关） */
 const FUNNY_TASKS = [
   '偷田雷手机！',
@@ -420,6 +434,18 @@ function showResult(answers) {
   const taskEl = document.getElementById('res-task-body');
   if (taskEl) taskEl.textContent = pickRandomTask();
   renderEssay(document.getElementById('res-essay'), persona.essay || '');
+
+  const charPath = CHAR_IMAGE_BY_CODE[persona.code];
+  const portraitEl = document.getElementById('res-char-portrait');
+  if (portraitEl) {
+    if (charPath) {
+      portraitEl.hidden = false;
+      portraitEl.innerHTML = `<img class="res-char-img" src="${charPath}" alt="${displayName} 形象" loading="lazy" decoding="async" />`;
+    } else {
+      portraitEl.hidden = true;
+      portraitEl.innerHTML = '';
+    }
+  }
 
   const bars = document.getElementById('dim-bars');
   bars.innerHTML = '';
