@@ -54,6 +54,10 @@ const CHAR_IMAGE_BY_CODE = {
   BOIL: 'assets/chars/feiwu-mi.png',
   VAUL: 'assets/chars/cangshu-mi.png',
   CHLL: 'assets/chars/bailan-mi.png',
+  MOSS: 'assets/chars/dingzihu-mi.png',
+  JUDG: 'assets/chars/tiezui-mi.png',
+  MONK: 'assets/chars/zhenyan-mi.png',
+  MIST: 'assets/chars/xiangmei-mi.png',
 };
 
 /** 结果页随机一条搞笑小任务（与计分无关） */

@@ -83,10 +83,112 @@
               情绪烈度：尖叫、分享欲 ↔ 冷静、佛系
             </p>
             <p>
-              共 <strong>20</strong> 道雷朋向情景题，选最贴近的一项即可；无标准答案，测出来仅供对号入座和自嘲。
+              共 <strong>20</strong> 道雷朋向情景题，选最贴近的一项即可；无标准答案，测出来仅供嗷呜嗷呜。
             </p>
           </div>
         </article>
+
+        <div class="intro-actions">
+          <button type="button" class="btn primary btn-start-glow" id="btn-start">开始测试</button>
+        </div>
+      </section>
+
+      <!-- 答题 -->
+      <section id="screen-quiz" class="screen hidden">
+        <p class="quiz-intro">
+          共 <span id="total-q">20</span> 题，请选择最贴近的一项。
+        </p>
+        <div class="progress-wrap">
+          <div class="progress-bar" id="progress-bar"></div>
+        </div>
+        <article class="card question-card">
+          <p class="q-meta">第 <span id="q-index">1</span> 题</p>
+          <h2 class="q-text" id="q-text"></h2>
+          <div class="options" id="options"></div>
+        </article>
+      </section>
+
+      <!-- 结果 -->
+      <section id="screen-result" class="screen hidden" aria-live="polite">
+        <div class="result-hero card">
+          <p class="eyebrow">你的人格类型是：</p>
+          <h2 class="type-name-cn" id="res-name-cn">——</h2>
+          <div id="res-char-portrait" class="res-char-portrait" hidden></div>
+          <p class="type-code" id="res-code">????</p>
+          <div class="avatar-placeholder" id="res-avatar">
+            <span>人格配图占位<br />在 <code>PERSONAS_BY_CODE</code> 中设置 <code>image</code> 路径</span>
+          </div>
+          <p class="type-tagline" id="res-tagline">——</p>
+        </div>
+
+        <div class="card task-card" id="res-task-card" aria-label="随机搞笑小任务">
+          <p class="task-kicker">所有米米拿出智能手机！</p>
+          <p class="task-body" id="res-task-body"></p>
+          
+        </div>
+
+        <div class="card">
+          <h3 class="section-title-sm">类型解读</h3>
+          <div id="res-essay" class="res-essay" aria-live="polite"></div>
+        </div>
+
+        <div class="card result-meme-card">
+          <div class="result-mimi-grid" aria-label="梗图：钉子户米、铁嘴米、真言米、想美了米">
+            <div class="result-mimi-tile">
+              <div class="result-mimi-frame">
+                <img
+                  src="assets/chars/dingzihu-mi.png"
+                  alt="钉子户米"
+                  width="200"
+                  height="200"
+                  loading="lazy"
+                  decoding="async"
+                />
+              </div>
+              <span class="result-mimi-label">钉子户米</span>
+            </div>
+            <div class="result-mimi-tile">
+              <div class="result-mimi-frame">
+                <img
+                  src="assets/chars/tiezui-mi.png"
+                  alt="铁嘴米"
+                  width="200"
+                  height="200"
+                  loading="lazy"
+                  decoding="async"
+                />
+              </div>
+              <span class="result-mimi-label">铁嘴米</span>
+            </div>
+            <div class="result-mimi-tile">
+              <div class="result-mimi-frame">
+                <img
+                  src="assets/chars/zhenyan-mi.png"
+                  alt="真言米"
+                  width="200"
+                  height="200"
+                  loading="lazy"
+                  decoding="async"
+                />
+              </div>
+              <span class="result-mimi-label">真言米</span>
+            </div>
+            <div class="result-mimi-tile">
+              <div class="result-mimi-frame">
+                <img
+                  src="assets/chars/xiangmei-mi.png"
+                  alt="想美了米"
+                  width="200"
+                  height="200"
+                  loading="lazy"
+                  decoding="async"
+                />
+              </div>
+              <span class="result-mimi-label">想美了米</span>
+            </div>
+          </div>
+          <p class="result-wf-whisper">wf身体冷冷的，多半是……</p>
+        </div>
 
         <article class="card credits-card">
           <h3 class="intro-title">
@@ -96,9 +198,6 @@
           <p class="credits-body">
             本网页由 <strong>米米宇宙研发组</strong> 制作，供米米同好自测娱乐。
           </p>
-          <p class="credits-body">
-            欢迎关注我们，获取最新资讯、测试更新与同好整活；也欢迎把本页分享给更多米米。全平台入口见下方「关注官号」。
-          </p>
         </article>
 
         <article class="card official-card">
@@ -107,9 +206,15 @@
             关注官号 · 全平台
           </h3>
           <p class="official-intro">
-            欢迎关注各平台官号（均为 <strong>米米宇宙｜0715</strong>），获取雷朋向资讯、活动与同人整活；本测试为粉丝向娱乐向内容，结果仅供自嘲与分享，请理性嗑糖、友好交流。
+            我们是米老师运营团队，带大家主动汲取知识，成长成为更好的自己。<br /><br />
+            我们的口号是：<br />
+            学成归来当大佬，<br />
+            雷朋道上米米保！
           </p>
-          <div class="social-grid" aria-label="官号入口（点击图片）">
+          <p class="muted small official-intro-hint">
+            点击下图前往各平台账号；本测试仅供娱乐，请理性交流。
+          </p>
+          <div class="social-grid" aria-label="官号入口">
             <a
               class="social-tile"
               href="https://v.douyin.com/_4U-5XvKwxM/"
@@ -159,7 +264,6 @@
               <span class="social-tile-label">哔哩哔哩 · 米米宇宙｜0715</span>
             </a>
           </div>
-          <p class="muted small official-more">画师致谢见下方「致谢 · 美工」区。</p>
         </article>
 
         <article class="card recruit-poster-card">
@@ -180,7 +284,7 @@
           </div>
           <div class="recruit-template-box">
             <p class="recruit-template-tip">
-              <strong>投递提醒：</strong>请下载简历模板，按说明填写后投递；邮件以海报内为准，注意截止时间与格式要求。
+              <strong>投递提醒：</strong>请下载简历模板，按说明填写后投递；邮件以海报内为准，注意格式要求。
             </p>
             <a
               class="btn-template"
@@ -188,9 +292,6 @@
               target="_blank"
               rel="noopener"
               >打开简历模板（Word）</a>
-            <p class="muted small recruit-template-note">
-              点击后由浏览器或系统用 Word / WPS 打开；若只下载不打开，可右键链接选「另存为」。在线访问本站（非 <code>file://</code>）时最稳定。
-            </p>
           </div>
         </article>
 
@@ -200,7 +301,7 @@
             致谢 · 美工
           </h3>
           <p class="artist-thanks-text">
-            感谢 <strong>小米米出品老师</strong> 为本项目提供的形象与支持；以下为老师小红书主页入口（点击名称即可，无需复制长链接）。
+            感谢 <strong>小米米出品老师</strong> 为本项目提供的形象与支持。
           </p>
           <a
             class="artist-thumb-link"
@@ -226,50 +327,6 @@
               >小lu画呀画 · 小红书</a>
           </div>
         </article>
-
-        <div class="intro-actions">
-          <button type="button" class="btn primary btn-start-glow" id="btn-start">开始测试</button>
-        </div>
-      </section>
-
-      <!-- 答题 -->
-      <section id="screen-quiz" class="screen hidden">
-        <p class="quiz-intro">
-          共 <span id="total-q">20</span> 题，请选择最贴近的一项。
-        </p>
-        <div class="progress-wrap">
-          <div class="progress-bar" id="progress-bar"></div>
-        </div>
-        <article class="card question-card">
-          <p class="q-meta">第 <span id="q-index">1</span> 题</p>
-          <h2 class="q-text" id="q-text"></h2>
-          <div class="options" id="options"></div>
-        </article>
-      </section>
-
-      <!-- 结果 -->
-      <section id="screen-result" class="screen hidden" aria-live="polite">
-        <div class="result-hero card">
-          <p class="eyebrow">你的人格类型是：</p>
-          <h2 class="type-name-cn" id="res-name-cn">——</h2>
-          <div id="res-char-portrait" class="res-char-portrait" hidden></div>
-          <p class="type-code" id="res-code">????</p>
-          <div class="avatar-placeholder" id="res-avatar">
-            <span>人格配图占位<br />在 <code>PERSONAS_BY_CODE</code> 中设置 <code>image</code> 路径</span>
-          </div>
-          <p class="type-tagline" id="res-tagline">——</p>
-        </div>
-
-        <div class="card task-card" id="res-task-card" aria-label="随机搞笑小任务">
-          <p class="task-kicker">所有米米拿出智能手机！</p>
-          <p class="task-body" id="res-task-body"></p>
-          
-        </div>
-
-        <div class="card">
-          <h3 class="section-title-sm">类型解读</h3>
-          <div id="res-essay" class="res-essay" aria-live="polite"></div>
-        </div>
 
         <div class="card">
           <h3 class="section-title-sm">四维倾向</h3>
